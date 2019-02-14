@@ -72,11 +72,13 @@ class App extends Component {
     return (
       <div className="container">
         <h1>Tik Tak Toe Game</h1>
-        <button disabled={this.state.player === null} onClick={() => {this.replay()}}>Replay</button>
         <PlayerInfo player = {this.state.player} SelectPlayer = {(selectedPlayer) =>{this.SelectPlayer(selectedPlayer)}} />
+        <button  disabled={this.state.player === null} onClick={() => {this.replay()}}>Replay</button>
+
         <div className="box-area">
           {Box}
         </div>
+
       </div>
 
     )

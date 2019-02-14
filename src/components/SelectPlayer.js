@@ -12,13 +12,15 @@ export default class SelectPlayer extends Component {
 
             <div>
                 <form onSubmit={(e) => this.selectplayer(e)} >
+
                     <label  >Play with "X"
-                    <input type="radio" value="X" name="player"  />
+                    <input className="radio" type="radio" value="X" name="player"  />
                     </label>
                     <label>Play with "O"
-                    <input type="radio" id="O" name="player" value="O" />
+                    <input className="radio" type="radio" id="O" name="player" value="O" />
+                    <input className="submit" type="submit" value="Start" />
+
                     </label>
-                    <input type="submit" value="Start" />
 
                 </form>
 

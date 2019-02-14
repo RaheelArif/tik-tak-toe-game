@@ -1,4 +1,5 @@
 body{
+  font-family: "Comic Sans MS", cursive, sans-serif;
   background-image: url("background.jpg");
   background-repeat: no-repeat;
 }
@@ -11,15 +12,62 @@ body{
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  width: 320px;
+  width: 330px;
 }
 .box{
+  color: rgb(229, 255, 0);
   display: flex;
+  font-weight: bolder;
   justify-content: center;
   align-items: center;
-  font-size: 38px;
+  font-size: 48px;
   width: 100px;
-  height: 80px;
-  border: 3px solid rgb(0.42, 0.42, 0.42);
+  height: 100px;
+  cursor: pointer;
+  border-radius: 54px;
+  border: 5px solid rgb(0, 13, 88);
+  background-image: url("bgbox.jpg");
   
+}
+span{
+  color: rgb(229, 255, 0);
+
+}
+h2{
+  margin: 3px;
+  color: rgb(0, 13, 88);
+}
+h1{
+  margin: 5px;
+  background-image: url("bgbox.jpg");
+padding: 7px;
+color: rgb(229, 255, 0);
+border-radius: 10px;
+font-weight: bolder;
+}
+button{
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  color: rgb(229, 255, 0);
+  background-image: url("bgbox.jpg");
+  margin: -5px 0px 5px 0px;
+
+}
+button:hover{
+  color: rgb(2, 207, 12);
+}
+
+.submit{
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  color: rgb(229, 255, 0);
+  background-image: url("bgbox.jpg");
+}
+.submit:hover{
+  color: rgb(2, 207, 12);
+}
+label{
+  color:  rgb(229, 255, 0);
 }

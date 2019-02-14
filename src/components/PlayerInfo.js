@@ -10,7 +10,7 @@ export default class PlayerInfo extends Component {
     }
 render(){
     let startPlay = this.props.player ? (        
-         <h2>Mr {this.props.player} Play Fast Sir!</h2>        
+         <h2>Play Fast Mr <span> {this.props.player} </span></h2>        
         ) : (
           <SelectPlayer player={(selectedPlayer) => { this.handleSelectPlayer(selectedPlayer) }} />
       );
