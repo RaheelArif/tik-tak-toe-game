@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import SelectPlayer from "./components/SelectPlayer";
+import PlayerInfo from "./components/PlayerInfo";
 import './App.css';
 class App extends Component {
   state = {
@@ -20,8 +20,9 @@ class App extends Component {
       ["2", "4", "6"],
     ]
     for (let index = 0; index < winnerStatus.length; index++) {
-      const [a, b, c] = winnerStatus[index];
-      if (this.state.text[a] && this.state.text[a] === this.state.text[b] && this.state.text[a] === this.state.text[c]) {
+      const [a, b, c] = winnerStatus[index]
+      const text = this.state.text 
+      if (text[a] && text[a] === text[b] && text[a] === text[c]) {
         alert("winner is " + this.state.player)
 
         this.setState({
@@ -65,20 +66,14 @@ class App extends Component {
       )
     })
    
-  let startPlay = this.state.player ? (
-    <div>
-     <h2>Mr {this.state.player} Play Fast Sir!</h2>
-     <button onClick={() => {this.replay()}}>Replay</button>
-    </div>
-    ) : (
-      <SelectPlayer player={(selectedPlayer) => { this.SelectPlayer(selectedPlayer) }} />
-  );
+
 
 
     return (
       <div className="container">
         <h1>Tik Tak Toe Game</h1>
-        {startPlay}
+        <button disabled={this.state.player === null} onClick={() => {this.replay()}}>Replay</button>
+        <PlayerInfo player = {this.state.player} SelectPlayer = {(selectedPlayer) =>{this.SelectPlayer(selectedPlayer)}} />
         <div className="box-area">
           {Box}
         </div>
