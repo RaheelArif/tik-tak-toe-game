@@ -23,14 +23,14 @@
   width: 180px;
   height: 180px;
   border-radius: 95px;
-  border: 2px solid black;
+  border: 2px solid rgb(100, 100, 100);
 }
 .s-t-r-img {
   width: 180px;
   height: 180px;
   border-radius: 95px;
   display: flex;
-  border: 2px solid black;
+  border: 2px solid rgb(100, 100, 100);
 }
 .s-t-l-txt {
   text-transform: capitalize;
@@ -115,6 +115,9 @@
   margin-right: 0px;
   padding-left: 3px;
   /* background-color: beige; */
+}
+.dif22-2{
+  align-items: flex-start;
 }
 .s-mid {
   margin-top: 10px;
