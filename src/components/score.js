@@ -1,13 +1,11 @@
 import React, { Component } from "react";
 import {
   exportComponentAsJPEG,
-  exportComponentAsPDF,
   exportComponentAsPNG,
 } from "react-component-export-image";
 import LinearProgress from "@material/react-linear-progress";
 import Logo from "./images/verdict-logo.svg";
 import earth from "./images/earth.png";
-import lestner from "./images/Brock.jpg";
 import icon1 from "./images/google-play.png";
 import icon2 from "./images/app-store.png";
 import "@material/react-linear-progress/dist/linear-progress.css";
@@ -44,8 +42,7 @@ class Score extends Component {
         bluePt: bluePT,
         redTotal: red,
         blueTotal: blue,
-      },
-      (e) => console.log(this.state, "aahshs")
+      }
     );
   }
 
@@ -53,7 +50,7 @@ class Score extends Component {
     return (
       <div>
         {!this.state.data ? (
-          <h1>not data</h1>
+          <div class="loading"></div>
         ) : (
           <div className="s-container">
             <div className="s-box">
@@ -90,7 +87,7 @@ class Score extends Component {
               </div>
               {this.state.data.rounds.map((value, index) => {
                 return (
-                  <div className="s-mid">
+                  <div key={index} className="s-mid">
                     <div className="s-m-box">
                       <h2 className="s-m-h">ROUND {index + 1}</h2>
                       <div className="sm-new-cc">
