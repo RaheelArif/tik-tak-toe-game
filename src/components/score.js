@@ -17,11 +17,11 @@ class Score extends Component {
     redTotal: 0,
     redPt: undefined,
     rounds: [
-      { red: 9.0, blue: 9.2 },
-      { red: 1, blue: 9.8 },
-      { red: 9.83, blue: 1.7 },
-      { red: 10, blue: 9 },
-      { red: 10, blue: 9 },
+      { red: 9.0, blue: 9.0 },
+      { red: 9.8, blue: 7.8 },
+      { red: 9.83, blue: 8.7 },
+      { red: 9, blue: 9.9 },
+      { red: 8, blue: 9.8 },
     ],
   };
   async componentDidMount() {
@@ -88,14 +88,11 @@ class Score extends Component {
                       </div>
                       {value.red - value.blue > 0 ? (
                         <div className="sm-pro-lc2">
-                          <h4 className="sm-pro-lc-txt2">
-                           1.1
-                          </h4>
+                          <h4 className="sm-pro-lc-txt2">+{(value.red - value.blue).toFixed(2)}</h4>
 
                           <LinearProgress
                             className="sm-pro-lc-bx2"
                             progress={0.1}
-
                             bufferingDots={false}
                             buffer={1}
                           />
@@ -103,36 +100,40 @@ class Score extends Component {
                       ) : null}
                     </div>
 
-                    <div className="sm-diff">
-                      <div className="sm-pro2">
-                        <div className="dif-bb">
-                          <div className="sm-pro-rc">
-                            <LinearProgress
-                              className="sm-pro-rc-bx"
-                              progress={value.blue / 10}
-                              bufferingDots={false}
-                              buffer={1}
-                            />
-                            <h4 className="sm-pro-rc-txt">{value.blue}</h4>
+                      <div className="sm-diff">
+                        <div className="sm-pro2">
+                          <div className="dif-bb">
+                            <div className="sm-pro-rc">
+                              <LinearProgress
+                                className="sm-pro-rc-bx"
+                                progress={value.blue / 10}
+                                bufferingDots={false}
+                                buffer={1}
+                              />
+                              <h4 className="sm-pro-rc-txt">{value.blue}</h4>
+                            </div>
                           </div>
+                          {value.blue - value.red > 0 ? (
+                            <div className="sm-pro-rc2">
+                              <LinearProgress
+                                className="sm-pro-rc-bx2"
+                                progress={(value.blue - value.red) / 10}
+                                bufferingDots={false}
+                                buffer={1}
+                              />
+                              <h4 className="sm-pro-rc-txt2">
+                                {(value.blue - value.red).toFixed(2)}+
+                              </h4>
+                            </div>
+                          ) : null}
                         </div>
-                        {value.blue - value.red > 0 ? (
-                          <div className="sm-pro-rc2">
-                            <LinearProgress
-                              className="sm-pro-rc-bx2"
-                              progress={(value.blue - value.red) / 10}
-                              bufferingDots={false}
-                              buffer={1}
-                            />
-                            <h4 className="sm-pro-rc-txt2">
-                              {(value.blue - value.red).toFixed(2)}+
-                            </h4>
-                          </div>
-                        ) : null}
                       </div>
-                    </div>
                   </div>
+                  {value.blue - value.red !== 0 ? (
+
                   <div className="h4-dd">Difference</div>
+                  ) : null}
+
                 </div>
               </div>
             );
@@ -148,11 +149,10 @@ class Score extends Component {
 
                     <LinearProgress
                       className="sm-pro-lc-bxff"
-                      progress={0.9 }
+                      progress={0.9}
                       bufferingDots={false}
                       buffer={1}
                       reversed={true}
-
                     />
                   </div>
                   {this.state.redTotal - this.state.blueTotal > 0 ? (
@@ -182,8 +182,7 @@ class Score extends Component {
                           className="sm-pro-rc-bx"
                           progress={45.26 / 5 / 10}
                           bufferingDots={false}
-                        buffer={1}
-
+                          buffer={1}
                         />
                         <h4 className="sm-pro-rc-txt">{45.26}</h4>
                       </div>
@@ -194,8 +193,7 @@ class Score extends Component {
                           className="sm-pro-rc-bx2"
                           progress={12 / 10}
                           bufferingDots={false}
-                        buffer={1}
-
+                          buffer={1}
                         />
                         <h4 className="sm-pro-rc-txt22">
                           {(this.state.blueTotal - this.state.redTotal).toFixed(
@@ -207,11 +205,11 @@ class Score extends Component {
                   </div>
                 </div>
               </div>
-              <div className="h4-dd">Difference</div>
+              <div style={{marginTop:"-10px"}} className="h4-dd">Difference</div>
             </div>
           </div>
           <div className="f-c-footer">
-            <img className="fc-icon1" src={icon1} alt="" />
+            <img className="fc-icon1" src={icon2} alt="" />
             <img className="fc-icon1" src={icon1} alt="" />
           </div>
         </div>
@@ -230,12 +228,13 @@ export default class MyComponent extends React.Component {
     return (
       <React.Fragment>
         <Score ref={this.componentRef} />
-        <button onClick={() => exportComponentAsJPEG(this.componentRef)}>
-          Export As JPEG
+        <h3 className="downl-r">Download Restults</h3>
+        <button className="buttonDownload" onClick={() => exportComponentAsJPEG(this.componentRef)}>
+          JPEG
         </button>
 
-        <button onClick={() => exportComponentAsPNG(this.componentRef)}>
-          Export As PNG
+        <button className="buttonDownload" onClick={() => exportComponentAsPNG(this.componentRef)}>
+         PNG
         </button>
       </React.Fragment>
     );

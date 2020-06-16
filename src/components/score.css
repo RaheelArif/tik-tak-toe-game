@@ -1,6 +1,7 @@
 .s-container {
   display: flex;
   justify-content: center;
+  font-family: sans-serif;
 }
 .s-box {
   display: flex;
@@ -86,16 +87,17 @@
 .sm-pro-lc-txt {
   color: rgb(182, 74, 62);
   font-weight: 700;
-  font-size: 18px;
+  font-size: 20px;
   margin: 0px;
-  width: 60px;
+  width: 68px;
+  margin-right: 10px;
   text-align: right;
 
 }
 .sm-pro-rc-txt {
   color: rgb(85, 165, 252);
   font-weight: 700;
-  font-weight: 18px;
+  font-size: 20px;
   margin: 0px;
   width: 60px;
 }
@@ -144,13 +146,13 @@
 .sm-pro-lc {
   display: flex;
   align-items: center;
-  width: 530px;
+  width: 545px;
   justify-content: flex-start;
 }
 .sm-pro-rc {
   display: flex;
   align-items: center;
-  width: 530px;
+  width: 545px;
   justify-content: flex-start;
 }
 .sm-pro2f {
@@ -252,7 +254,7 @@
 }
 .h4-dd {
   font-weight: 700;
-  margin-top: -20px !important;
+  margin-top: -15px ;
   letter-spacing: 0rem;
 }
 .sm-pro-lc-bxff {
@@ -278,4 +280,94 @@
 .fc-icon1 {
   width: 200px;
   margin: 20px 10px;
+}
+.downl-r{
+  margin: 0px 0px 5px 10px;
+}
+
+.buttonDownload {
+	display: inline-block;
+	position: relative;
+	padding: 10px 25px;
+  
+	background-color: #838383;
+	color: white;
+  
+	font-family: sans-serif;
+	text-decoration: none;
+	font-size: 0.9em;
+	text-align: center;
+  text-indent: 15px;
+  border-color: transparent;
+  margin: 0px 10px 10px 10px;
+}
+
+.buttonDownload:hover {
+	background-color: #333;
+  color: white;
+  transition: 0.4s;
+}
+
+.buttonDownload:before, .buttonDownload:after {
+	content: ' ';
+	display: block;
+	position: absolute;
+	left: 15px;
+	top: 52%;
+}
+
+/* Download box shape  */
+.buttonDownload:before {
+	width: 10px;
+	height: 2px;
+	border-style: solid;
+	border-width: 0 2px 2px;
+}
+
+/* Download arrow shape */
+.buttonDownload:after {
+	width: 0;
+	height: 0;
+	margin-left: 3px;
+	margin-top: -7px;
+  
+	border-style: solid;
+	border-width: 4px 4px 0 4px;
+	border-color: transparent;
+	border-top-color: inherit;
+	
+	animation: downloadArrow 2s linear infinite;
+	animation-play-state: paused;
+}
+
+.buttonDownload:hover:before {
+	border-color: white;
+}
+
+.buttonDownload:hover:after {
+	border-top-color: white;
+	animation-play-state: running;
+}
+
+/* keyframes for the download icon anim */
+@keyframes downloadArrow {
+	/* 0% and 0.001% keyframes used as a hackish way of having the button frozen on a nice looking frame by default */
+	0% {
+		margin-top: -7px;
+		opacity: 1;
+	}
+	
+	0.001% {
+		margin-top: -15px;
+		opacity: 0;
+	}
+	
+	50% {
+		opacity: 1;
+	}
+	
+	100% {
+		margin-top: 0;
+		opacity: 0;
+	}
 }
