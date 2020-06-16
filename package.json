@@ -3,7 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material/react-linear-progress": "^0.15.0",
     "react": "^16.6.3",
+    "react-component-export-image": "^0.1.6",
     "react-dom": "^16.6.3",
     "react-scripts": "2.1.1"
   },
