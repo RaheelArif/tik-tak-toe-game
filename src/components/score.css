@@ -2,19 +2,27 @@
   display: flex;
   justify-content: center;
   font-family: sans-serif;
+  background-color: white;
 }
 .s-box {
   display: flex;
+  position: static;
   flex-direction: column;
   width: 1080px;
+  min-width: 1080px;
   height: 1350px;
+  min-height: 1350px;
   /* background-color: rgb(253, 253, 253); */
 }
 .s-top {
   display: flex;
   padding-top: 30px;
   width: 100%;
+  padding-left: 29px;
   justify-content: center;
+}
+.s-top-c{
+  margin: 0px 20px;
 }
 .s-t-c-logo {
   width: 350px;
@@ -403,5 +411,13 @@
      use 0% instead for anticlockwise */
   100% {
     -webkit-transform: rotate(360deg);
+  }
+}
+@media screen and (max-width: 1080px) {
+  .s-box{
+    margin-left: 10px !important;
+  }
+  .s-container {
+    justify-content: flex-start;
   }
 }
