@@ -15,7 +15,7 @@ class Score extends Component {
     redTotal: 0,
     redPt: undefined,
     rounds: [
-      { red: 9.0, blue: 9.0 },
+      { red: 9.0, blue: 9.22 },
       { red: 9.8, blue: 7.8 },
       { red: 9.83, blue: 8.7 },
       { red: 9, blue: 9.9 },
@@ -32,25 +32,45 @@ class Score extends Component {
       red = red + this.state.data.rounds[i].roundBallots.global.fighter1Score;
       blue = blue + this.state.data.rounds[i].roundBallots.global.fighter2Score;
     }
+
     let redPT = red / this.state.rounds.length;
     red = red.toFixed(2);
     let bluePT = blue / this.state.rounds.length;
+    // console.log(bluePT , "pt")
+    let totalBlueMargin = (bluePT * 30 / 5) + 10;
     blue = blue.toFixed(2);
-    this.setState(
-      {
-        redPt: redPT,
-        bluePt: bluePT,
-        redTotal: red,
-        blueTotal: blue,
+    this.setState({
+      redPt: redPT,
+      bluePt: bluePT,
+      redTotal: red,
+      blueTotal: blue,
+      totalBlueMargin,
+    });
+    //for dinamic margin
+    let marginBlue = []
+    for (let i = 0; i < this.state.rounds.length; i++) {
+      let margin =
+        this.state.data.rounds[i].roundBallots.global.fighter1Score -
+        this.state.data.rounds[i].roundBallots.global.fighter2Score;
+      if (margin < 0) {
+        margin = (margin * -30) + 10
+        marginBlue.push(margin)
+
+      } else {
+        console.log(margin, "minus");
       }
-    );
+    }
+        this.setState({
+          marginBlue 
+        })
+    console.log(marginBlue)
   }
 
   render() {
     return (
       <div>
-        {!this.state.data ? (
-          <div class="loading"></div>
+        {!this.state.data  && !this.state.marginBlue ? (
+          <div class="loading" />
         ) : (
           <div className="s-container">
             <div className="s-box">
@@ -172,7 +192,8 @@ class Score extends Component {
                                   bufferingDots={false}
                                   buffer={1}
                                 />
-                                <h4 className="sm-pro-rc-txt2">
+                                {!this.state.marginBlue ? null :
+                                <h4 className="sm-pro-rc-txt2" style={{marginLeft: this.state.marginBlue[index]}} >
                                   {(
                                     value.roundBallots.global.fighter2Score.toFixed(
                                       2
@@ -183,6 +204,7 @@ class Score extends Component {
                                   ).toFixed(2)}
                                   +
                                 </h4>
+              }
                               </div>
                             ) : null}
                           </div>
@@ -221,7 +243,10 @@ class Score extends Component {
                       {this.state.redTotal - this.state.blueTotal > 0 ? (
                         <div className="sm-pro-lc2">
                           <h4 className="sm-pro-lc-txt22">
-                            +{(this.state.redTotal - this.state.blueTotal).toFixed(2)}
+                            +
+                            {(
+                              this.state.redTotal - this.state.blueTotal
+                            ).toFixed(2)}
                           </h4>
 
                           <LinearProgress
@@ -257,11 +282,12 @@ class Score extends Component {
                           <div className="sm-pro-rc2">
                             <LinearProgress
                               className="sm-pro-rc-bx2"
-                              progress={this.state.bluePt / 10}
+                              progress={this.state.bluePt / (10 * this.state.data.rounds.length) }
                               bufferingDots={false}
                               buffer={1}
                             />
-                            <h4 className="sm-pro-rc-txt22">
+
+                            <h4 style={{marginLeft: this.state.totalBlueMargin}} className="sm-pro-rc-txt22">
                               {(
                                 this.state.blueTotal - this.state.redTotal
                               ).toFixed(2)}
@@ -271,7 +297,7 @@ class Score extends Component {
                       </div>
                     </div>
                   </div>
-                  <div style={{ marginTop: "-10px" }} className="h4-dd">
+                  <div  className="h4-dd">
                     Difference
                   </div>
                 </div>

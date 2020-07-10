@@ -131,7 +131,8 @@
   /* transform: scaleX(-1); */
 }
 .mdc-linear-progress__buffer{
-    background-color: rgb(242, 242, 242);
+    /* background-color: rgb(242, 242, 242); */
+    background-color: transparent;
 }
 .sm-pro-rc-bx {
   width: 530px;
@@ -240,7 +241,8 @@
 }
 .sm-pro-rc-txt2 {
   color: rgb(127, 185, 247);
-  margin-top: 5px;
+  margin-top: 7px;
+  position: absolute;
 }
 .sm-pro-lc-txt2 {
   color: rgb(182, 74, 62);
@@ -249,7 +251,8 @@
 }
 .sm-pro-rc-txt22 {
   color: rgb(127, 185, 247);
-  margin-top: 5px;
+  margin-top: 7px;
+  position: absolute;
 }
 .sm-pro-lc-txt22 {
   color: rgb(182, 74, 62) ;
@@ -257,7 +260,7 @@
 }
 .h4-dd {
   font-weight: 700;
-  margin-top: -15px ;
+  /* margin-top: -15px ; */
   letter-spacing: 0rem;
 }
 .sm-pro-lc-bxff {
