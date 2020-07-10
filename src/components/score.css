@@ -38,7 +38,7 @@
   font-size: 32px;
   padding: 0px;
   font-weight: 700;
-  color: rgb(182, 74, 62);
+  color: #B7493D;
 }
 .s-top-l {
   display: flex;
@@ -52,7 +52,7 @@
   font-size: 32px;
   padding: 0px;
   font-weight: 700;
-  color: rgb(127, 185, 247);
+  color: #7BB9F6;
 
   /* color: rgb(164, 205, 249); */
 }
@@ -85,7 +85,7 @@
   display: flex;
 }
 .sm-pro-lc-txt {
-  color: rgb(182, 74, 62);
+  color: #B7493D;
   font-weight: 700;
   font-size: 20px;
   margin: 0px;
@@ -95,7 +95,7 @@
 
 }
 .sm-pro-rc-txt {
-  color: rgb(85, 165, 252);
+  color: #7BB9F6;
   font-weight: 700;
   font-size: 20px;
   margin: 0px;
@@ -107,6 +107,10 @@
   flex-direction: column;
   /* width: 500px; */
   margin-left: -10px;
+}
+.opacity-my{
+  opacity: 0.7;
+
 }
 .sm-pro2f {
   display: flex;
@@ -140,11 +144,11 @@
   margin: 0px 10px 0px 5px;
 }
 .sm-pro-lc-bx .mdc-linear-progress__bar-inner {
-  background-color: rgb(182, 74, 62);
+  background-color: #B7493D;
   position: absolute;
 }
 .sm-pro-rc-bx .mdc-linear-progress__bar-inner {
-  background-color: rgb(127, 185, 247);
+  background-color: #7BB9F6;
   position: absolute;
 }
 .sm-pro-lc {
@@ -212,13 +216,13 @@
   transform: scaleX(-1);
 }
 .sm-pro-lc-bx22f .mdc-linear-progress__bar-inner {
-  background-color: rgb(182, 74, 62);
+  background-color: #B7493D;
 }
 .sm-pro-lc-bx2 .mdc-linear-progress__bar-inner {
-  background-color: rgb(182, 74, 62);
+  background-color: #B7493D;
 }
 .sm-pro-lc-bx22 .mdc-linear-progress__bar-inner {
-  background-color: rgb(182, 74, 62);
+  background-color: #B7493D;
 }
 
 .sm-pro-rc-bx2 {
@@ -227,7 +231,7 @@
   margin: 5px 5px !important;
 }
 .sm-pro-rc-bx2 .mdc-linear-progress__bar-inner {
-  background-color: rgb(127, 185, 247);
+  background-color: #7BB9F6;
 }
 .sm-pro-rc22 {
   width: 450px;
@@ -240,23 +244,25 @@
   /* background-color: rosybrown; */
 }
 .sm-pro-rc-txt2 {
-  color: rgb(127, 185, 247);
+  color: #7BB9F6;
   margin-top: 7px;
   position: absolute;
 }
 .sm-pro-lc-txt2 {
-  color: rgb(182, 74, 62);
-  margin-top: 2px;
+  color: #B7493D;
+  margin-top: 7px;
+  position: absolute;
   /* margin-right: -150px; */
 }
 .sm-pro-rc-txt22 {
-  color: rgb(127, 185, 247);
+  color: #7BB9F6;
   margin-top: 7px;
   position: absolute;
 }
 .sm-pro-lc-txt22 {
-  color: rgb(182, 74, 62) ;
-  margin-top: 2px;
+  color: #B7493D ;
+  margin-top: 7px;
+  position: absolute;
 }
 .h4-dd {
   font-weight: 700;
@@ -269,7 +275,7 @@
   height: 30px;
 }
 .sm-pro-lc-bxff .mdc-linear-progress__bar-inner {
-  background-color: rgb(182, 74, 62);
+  background-color: #B7493D;
 }
 .sm-pro-lc-bxff2 {
   width: 450px;
@@ -277,7 +283,7 @@
   margin: 0px 10px;
 }
 .sm-pro-lc-bxff2 .mdc-linear-progress__bar-inner {
-  background-color: rgb(127, 185, 247);
+  background-color: #7BB9F6;
 }
 .f-c-footer {
   display: flex;

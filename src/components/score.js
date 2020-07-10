@@ -17,13 +17,14 @@ class Score extends Component {
     rounds: [
       { red: 9.0, blue: 9.22 },
       { red: 9.8, blue: 7.8 },
-      { red: 9.83, blue: 8.7 },
+      { red: 9.83, blue: 8.87 },
       { red: 9, blue: 9.9 },
       { red: 8, blue: 9.8 },
     ],
   };
+
   async componentDidMount() {
-    await fetch("https://dayviec25.github.io/test-apis/sample1.json")
+    await fetch("https://dayviec25.github.io/test-apis/sample3.json")
       .then((response) => response.json())
       .then((data) => this.setState({ data: data.fight }));
     let red = 0;
@@ -37,7 +38,7 @@ class Score extends Component {
     red = red.toFixed(2);
     let bluePT = blue / this.state.rounds.length;
     // console.log(bluePT , "pt")
-    let totalBlueMargin = (bluePT * 30 / 5) + 10;
+    let totalBlueMargin = (bluePT * 30) / 5 + 10;
     blue = blue.toFixed(2);
     this.setState({
       redPt: redPT,
@@ -46,30 +47,49 @@ class Score extends Component {
       blueTotal: blue,
       totalBlueMargin,
     });
+
     //for dinamic margin
-    let marginBlue = []
+    let marginBlue = [];
+    let marginRed = [];
     for (let i = 0; i < this.state.rounds.length; i++) {
       let margin =
         this.state.data.rounds[i].roundBallots.global.fighter1Score -
         this.state.data.rounds[i].roundBallots.global.fighter2Score;
-      if (margin < 0) {
-        margin = (margin * -30) + 10
-        marginBlue.push(margin)
 
+      if (margin < 0) {
+        margin = margin * -30 + 10;
+        marginBlue.push(margin);
+        marginRed.push(0);
       } else {
-        console.log(margin, "minus");
+        margin = margin * -30 - 10;
+        marginRed.push(margin);
+        marginBlue.push(0);
       }
     }
-        this.setState({
-          marginBlue 
-        })
-    console.log(marginBlue)
+    let finalMarginBlue =
+      (this.state.blueTotal - this.state.redTotal) /
+      this.state.data.rounds.length;
+    finalMarginBlue = finalMarginBlue * 30 + 10;
+    console.log(finalMarginBlue);
+    let finalMarginRed =
+      (this.state.redTotal - this.state.blueTotal) /
+      this.state.data.rounds.length;
+    finalMarginRed = finalMarginRed * -30 - 16;
+    finalMarginRed = Math.ceil(finalMarginRed);
+    finalMarginRed = finalMarginRed.toString() + "px";
+
+    this.setState({
+      marginBlue,
+      marginRed,
+      finalMarginBlue,
+      finalMarginRed,
+    });
   }
 
   render() {
     return (
       <div>
-        {!this.state.data  && !this.state.marginBlue ? (
+        {!this.state.data && !this.state.marginBlue ? (
           <div class="loading" />
         ) : (
           <div className="s-container">
@@ -111,7 +131,15 @@ class Score extends Component {
                     <div className="s-m-box">
                       <h2 className="s-m-h">ROUND {index + 1}</h2>
                       <div className="sm-new-cc">
-                        <div className="sm-pro">
+                        <div
+                          className={`sm-pro ${
+                            value.roundBallots.global.fighter1Score -
+                              value.roundBallots.global.fighter2Score >
+                            0
+                              ? null
+                              : "opacity-my"
+                          }`}
+                        >
                           <div className="sm-pro-lc">
                             <h4 className="sm-pro-lc-txt">
                               {value.roundBallots.global.fighter1Score.toFixed(
@@ -133,17 +161,24 @@ class Score extends Component {
                             value.roundBallots.global.fighter2Score >
                           0 ? (
                             <div className="sm-pro-lc2">
-                              <h4 className="sm-pro-lc-txt2">
-                                +
-                                {(
-                                  value.roundBallots.global.fighter1Score.toFixed(
-                                    2
-                                  ) -
-                                  value.roundBallots.global.fighter2Score.toFixed(
-                                    2
-                                  )
-                                ).toFixed(2)}
-                              </h4>
+                              {!this.state.marginRed ? null : (
+                                <h4
+                                  style={{
+                                    marginLeft: this.state.marginRed[index],
+                                  }}
+                                  className="sm-pro-lc-txt2"
+                                >
+                                  +
+                                  {(
+                                    value.roundBallots.global.fighter1Score.toFixed(
+                                      2
+                                    ) -
+                                    value.roundBallots.global.fighter2Score.toFixed(
+                                      2
+                                    )
+                                  ).toFixed(2)}
+                                </h4>
+                              )}
 
                               <LinearProgress
                                 className="sm-pro-lc-bx2"
@@ -160,7 +195,15 @@ class Score extends Component {
                         </div>
 
                         <div className="sm-diff">
-                          <div className="sm-pro2">
+                          <div
+                            className={`sm-pro2 ${
+                              value.roundBallots.global.fighter1Score -
+                                value.roundBallots.global.fighter2Score <
+                              0
+                                ? null
+                                : "opacity-my"
+                            }`}
+                          >
                             <div className="dif-bb">
                               <div className="sm-pro-rc">
                                 <LinearProgress
@@ -192,19 +235,24 @@ class Score extends Component {
                                   bufferingDots={false}
                                   buffer={1}
                                 />
-                                {!this.state.marginBlue ? null :
-                                <h4 className="sm-pro-rc-txt2" style={{marginLeft: this.state.marginBlue[index]}} >
-                                  {(
-                                    value.roundBallots.global.fighter2Score.toFixed(
-                                      2
-                                    ) -
-                                    value.roundBallots.global.fighter1Score.toFixed(
-                                      2
-                                    )
-                                  ).toFixed(2)}
-                                  +
-                                </h4>
-              }
+                                {!this.state.marginBlue ? null : (
+                                  <h4
+                                    className="sm-pro-rc-txt2"
+                                    style={{
+                                      marginLeft: this.state.marginBlue[index],
+                                    }}
+                                  >
+                                    {(
+                                      value.roundBallots.global.fighter2Score.toFixed(
+                                        2
+                                      ) -
+                                      value.roundBallots.global.fighter1Score.toFixed(
+                                        2
+                                      )
+                                    ).toFixed(2)}
+                                    +
+                                  </h4>
+                                )}
                               </div>
                             ) : null}
                           </div>
@@ -224,7 +272,13 @@ class Score extends Component {
                 <div className="s-m-box">
                   <h2 className="s-m-h">FINAL SCORE </h2>
                   <div className="sm-new-cc">
-                    <div className="sm-pro2f">
+                    <div
+                      className={`sm-pro2f ${
+                        this.state.redTotal - this.state.blueTotal > 0
+                          ? null
+                          : "opacity-my"
+                      }`}
+                    >
                       <div className="sm-pro-lc">
                         <h4 className="sm-pro-lc-txt">{this.state.redTotal}</h4>
 
@@ -242,16 +296,21 @@ class Score extends Component {
                       </div>
                       {this.state.redTotal - this.state.blueTotal > 0 ? (
                         <div className="sm-pro-lc2">
-                          <h4 className="sm-pro-lc-txt22">
-                            +
-                            {(
-                              this.state.redTotal - this.state.blueTotal
-                            ).toFixed(2)}
-                          </h4>
+                          {!this.state.finalMarginRed ? null : (
+                            <h4 style={{marginLeft: this.state.finalMarginRed}} className="sm-pro-lc-txt22">
+                              +
+                              {(
+                                this.state.redTotal - this.state.blueTotal
+                              ).toFixed(2)}
+                            </h4>
+                          )}
 
                           <LinearProgress
                             className="sm-pro-lc-bx22f"
-                            progress={this.state.redPt / 10}
+                            progress={
+                              (this.state.redTotal - this.state.blueTotal) /
+                              (10 * this.state.data.rounds.length)
+                            }
                             bufferingDots={false}
                             buffer={1}
                           />
@@ -260,7 +319,13 @@ class Score extends Component {
                     </div>
 
                     <div className="sm-diff">
-                      <div className="sm-pro2f dif22-2">
+                      <div
+                        className={`sm-pro2f dif22-2 ${
+                          this.state.redTotal - this.state.blueTotal < 0
+                            ? null
+                            : "opacity-my"
+                        }`}
+                      >
                         <div className="dif-bb">
                           <div className="sm-pro-rc">
                             <LinearProgress
@@ -282,24 +347,31 @@ class Score extends Component {
                           <div className="sm-pro-rc2">
                             <LinearProgress
                               className="sm-pro-rc-bx2"
-                              progress={this.state.bluePt / (10 * this.state.data.rounds.length) }
+                              progress={
+                                (this.state.blueTotal - this.state.redTotal) /
+                                (10 * this.state.data.rounds.length)
+                              }
                               bufferingDots={false}
                               buffer={1}
                             />
-
-                            <h4 style={{marginLeft: this.state.totalBlueMargin}} className="sm-pro-rc-txt22">
-                              {(
-                                this.state.blueTotal - this.state.redTotal
-                              ).toFixed(2)}
-                            </h4>
+                            {!this.state.finalMarginBlue ? null : (
+                              <h4
+                                style={{
+                                  marginLeft: this.state.finalMarginBlue,
+                                }}
+                                className="sm-pro-rc-txt22"
+                              >
+                                {(
+                                  this.state.blueTotal - this.state.redTotal
+                                ).toFixed(2)}
+                              </h4>
+                            )}
                           </div>
                         ) : null}
                       </div>
                     </div>
                   </div>
-                  <div  className="h4-dd">
-                    Difference
-                  </div>
+                  <div className="h4-dd">Difference</div>
                 </div>
               </div>
               <div className="f-c-footer">
