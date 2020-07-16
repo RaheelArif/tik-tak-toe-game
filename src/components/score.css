@@ -17,8 +17,8 @@
 .s-top {
   display: flex;
   padding-top: 30px;
-  width: 100%;
-  padding-left: 29px;
+  width: 1080px;
+  /* padding-left: 29px; */
   justify-content: center;
 }
 .s-top-c{
@@ -45,8 +45,11 @@
   margin: 20px 0px 0px 0px;
   font-size: 32px;
   padding: 0px;
+  width: 340px;
+  text-align: center;
   font-weight: 700;
   color: #B7493D;
+  /* background-color: blue; */
 }
 .s-top-l {
   display: flex;
@@ -59,6 +62,11 @@
   margin: 20px 0px 0px 0px;
   font-size: 32px;
   padding: 0px;
+  width: 340px;
+  text-align: center;
+  /* display: flex;
+  flex-wrap: nowrap; */
+  /* background-color: blue; */
   font-weight: 700;
   color: #7BB9F6;
 
@@ -147,9 +155,10 @@
     background-color: transparent;
 }
 .sm-pro-rc-bx {
-  width: 530px;
+  width: 460px !important;
   height: 30px;
   margin: 0px 10px 0px 5px;
+  /* border: 1px solid black; */
 }
 .sm-pro-lc-bx .mdc-linear-progress__bar-inner {
   background-color: #B7493D;
@@ -165,6 +174,7 @@
   width: 545px;
   justify-content: flex-start;
 }
+/* adsd */
 .sm-pro-rc {
   display: flex;
   align-items: center;
@@ -192,19 +202,20 @@
 .sm-pro-lc2 {
   display: flex;
   justify-content: flex-end;
-  width: 450px;
+  width: 465px;
 }
 .sm-pro-rc22 {
-  width: 450px;
+  width: 460px;
 }
 .sm-pro-rc2 {
   display: flex;
   justify-content: flex-start;
-  /* background-color: sandybrown; */
+  width: 465px;
+  /* background-color: blue; */
 }
 .sm-pro-lc-bx2 {
-    width: 300px;
-  height: 20px;
+    width: 460px;
+  height: 30px;
   margin: 5px 5px;
   position: relative;
   transform: scaleX(-1);
@@ -218,7 +229,7 @@
 }
 .sm-pro-lc-bx22f {
   height: 20px;
-  width: 300px;
+  width: 460px;
   margin: 5px 12px 0px 5px;
   position: relative;
   transform: scaleX(-1);
@@ -234,8 +245,8 @@
 }
 
 .sm-pro-rc-bx2 {
-  height: 20px;
-  width: 300px;
+  height: 30px;
+  width: 465px;
   margin: 5px 5px !important;
 }
 .sm-pro-rc-bx2 .mdc-linear-progress__bar-inner {
@@ -248,7 +259,8 @@
 }
 .dif-bb {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
+  width: 545px;
   /* background-color: rosybrown; */
 }
 .sm-pro-rc-txt2 {

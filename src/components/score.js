@@ -38,7 +38,7 @@ class Score extends Component {
     red = red.toFixed(2);
     let bluePT = blue / this.state.rounds.length;
     // console.log(bluePT , "pt")
-    let totalBlueMargin = (bluePT * 30) / 5 + 10;
+    let totalBlueMargin = (bluePT * 46) / 5 + 10;
     blue = blue.toFixed(2);
     this.setState({
       redPt: redPT,
@@ -57,11 +57,11 @@ class Score extends Component {
         this.state.data.rounds[i].roundBallots.global.fighter2Score;
 
       if (margin < 0) {
-        margin = margin * -30 + 10;
+        margin = margin * -46 + 10;
         marginBlue.push(margin);
         marginRed.push(0);
       } else {
-        margin = margin * -30 - 10;
+        margin = margin * -46 - 10;
         marginRed.push(margin);
         marginBlue.push(0);
       }
@@ -69,12 +69,12 @@ class Score extends Component {
     let finalMarginBlue =
       (this.state.blueTotal - this.state.redTotal) /
       this.state.data.rounds.length;
-    finalMarginBlue = finalMarginBlue * 30 + 10;
+    finalMarginBlue = finalMarginBlue * 46 + 10;
     console.log(finalMarginBlue);
     let finalMarginRed =
       (this.state.redTotal - this.state.blueTotal) /
       this.state.data.rounds.length;
-    finalMarginRed = finalMarginRed * -30 - 16;
+    finalMarginRed = finalMarginRed * -46 - 16;
     finalMarginRed = Math.ceil(finalMarginRed);
     finalMarginRed = finalMarginRed.toString() + "px";
 
